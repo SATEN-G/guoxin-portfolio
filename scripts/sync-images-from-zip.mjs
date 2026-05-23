@@ -114,6 +114,12 @@ function main() {
 
   fs.rmSync(staging, { recursive: true, force: true });
 
+  // 中文目录在 GitHub Pages 易 404，统一改为 ASCII
+  const { execSync } = await import("child_process");
+  execSync(`"${process.execPath}" "${path.join(root, "scripts", "rename-images-ascii.mjs")}"`, {
+    stdio: "inherit",
+  });
+
   console.log(`已同步 ${imageCount} 张图片到 images/projects/`);
   console.log("已更新 resume-data.js 中的 images 配置");
   console.log("");
