@@ -1,5 +1,7 @@
 const CATS = ProjectImageStore.CATEGORIES;
 
+const PROJECT_SLUGS = ["p01-kunshan", "p02-cangqiong", "p03-xingzhu", "p04-congpu", "p05-expo"];
+
 const CAT_UI = {
   user: {
     label: "用户端",
@@ -436,7 +438,7 @@ async function exportZip() {
     const i = Number(idx);
     const p = projects[i];
     const title = p?.title || "project";
-    const slug = String(i + 1).padStart(2, "0") + "-" + title.slice(0, 12).replace(/\s/g, "-");
+    const slug = PROJECT_SLUGS[i] || `p${String(i + 1).padStart(2, "0")}`;
     const projectFolder = root.folder(slug);
     byProject[idx].forEach((rec, seq) => {
       const ext =
