@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>郭鑫 · 资深产品经理作品集</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="tech-ambient" aria-hidden="true">
+    <div class="orb orb-cyan"></div>
+    <div class="orb orb-amber"></div>
+  </div>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="grid-glow" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-bracket">[</span>
+      <span class="logo-text">GX.PORTFOLIO</span>
+      <span class="logo-bracket">]</span>
+    </div>
+    <nav class="nav" aria-label="页面导览">
+      <a href="#banner" class="nav-link">精选项目</a>
+      <a href="#profile" class="nav-link">个人简介</a>
+      <a href="#skills" class="nav-link">专业技能</a>
+      <a href="#project-details" class="nav-link">项目详情</a>
+    </nav>
+  </header>
+
+  <!-- Banner 轮播 -->
+  <section id="banner" class="banner-section">
+    <div class="section-label">
+      <span class="label-line"></span>
+      <h2>精选项目 <span class="en">PROJECTS</span></h2>
+    </div>
+    <div class="carousel" role="region" aria-label="项目展示轮播">
+      <p class="data-source" id="dataSource"></p>
+      <div class="carousel-track" id="carouselTrack"></div>
+      <div class="carousel-controls">
+        <button type="button" class="ctrl-btn" id="prevBtn" aria-label="上一张">◀</button>
+        <div class="carousel-dots" id="carouselDots" role="tablist"></div>
+        <button type="button" class="ctrl-btn" id="nextBtn" aria-label="下一张">▶</button>
+      </div>
+      <div class="carousel-timer">
+        <span class="timer-bar" id="timerBar"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 个人简介 -->
+  <section id="profile" class="profile-section">
+    <div class="section-label">
+      <span class="label-line"></span>
+      <h2>个人简介 <span class="en">PROFILE</span></h2>
+    </div>
+
+    <div class="profile-layout">
+      <header class="profile-hero-panel">
+        <div class="hero-panel-bg" aria-hidden="true"></div>
+        <div class="hero-panel-grid">
+          <div class="hero-identity">
+            <div class="avatar-wrap">
+              <div class="avatar-ring">
+                <div class="avatar">郭</div>
+              </div>
+              <span class="avatar-tag">PM</span>
+            </div>
+            <div class="hero-text">
+              <p class="hero-label">PRODUCT MANAGER</p>
+              <h1 class="name" id="profileName">郭鑫</h1>
+              <p class="role" id="profileRole">资深产品经理</p>
+            </div>
+          </div>
+          <div class="hero-stats" id="profileStats"></div>
+          <div class="hero-action">
+            <a href="tel:15122486464" class="contact-btn" id="profileContact">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <span class="contact-num">15122486464</span>
+            </a>
+            <p class="hero-hint">应聘岗位 · 随时联系</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="profile-bento">
+        <article class="bento-card bento-info">
+          <div class="bento-head">
+            <span class="bento-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </span>
+            <h3>基本信息</h3>
+          </div>
+          <dl class="info-grid" id="profileInfo"></dl>
+        </article>
+
+        <article class="bento-card bento-certs">
+          <div class="bento-head">
+            <span class="bento-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15l-2 5 2-1 2 1-2-5M8.5 8.5a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0z"/><path d="M12 2l2.4 4.8 5.4.8-3.9 3.8.9 5.3L12 14.5 7.2 16.7l.9-5.3L4.2 7.6l5.4-.8L12 2z"/></svg>
+            </span>
+            <h3>持有证书</h3>
+          </div>
+          <ul class="cert-pills" id="profileCerts"></ul>
+        </article>
+
+        <article class="bento-card bento-domain">
+          <div class="bento-head">
+            <span class="bento-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            </span>
+            <h3>专业领域经验</h3>
+          </div>
+          <div class="domain-cards" id="profileDomain"></div>
+        </article>
+
+        <article class="bento-card bento-ability">
+          <div class="bento-head">
+            <span class="bento-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </span>
+            <h3>核心能力</h3>
+          </div>
+          <ul class="ability-steps" id="profileAbilities"></ul>
+        </article>
+
+        <article class="bento-card bento-insight">
+          <div class="bento-head">
+            <span class="bento-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            </span>
+            <h3>行业洞察与兴趣</h3>
+          </div>
+          <blockquote class="insight-quote" id="profileInsights"></blockquote>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 专业技能 -->
+  <section id="skills" class="skills-section">
+    <div class="section-label">
+      <span class="label-line"></span>
+      <h2>专业技能 <span class="en">PROFESSIONAL SKILLS</span></h2>
+    </div>
+    <div class="skills-grid" id="skillsGrid"></div>
+    <div class="skills-radar-wrap">
+      <div class="radar-header">
+        <div class="radar-header-text">
+          <h3 class="radar-title">能力维度</h3>
+          <p class="radar-sub">6-AXIS CAPABILITY SCAN · REAL-TIME PROFILE</p>
+        </div>
+        <div class="radar-header-stat" id="radarAvgStat" aria-live="polite">
+          <span class="radar-avg-label">综合指数</span>
+          <span class="radar-avg-value" id="radarAvgValue">--</span>
+        </div>
+      </div>
+      <div class="radar-stage">
+        <div class="radar-chart" id="radarChart" role="img" aria-label="六维能力雷达图">
+          <span class="radar-hud radar-hud-tl">RADAR.SYS</span>
+          <span class="radar-hud radar-hud-tr">v2.0</span>
+          <span class="radar-hud radar-hud-bl" id="radarHudStatus">SCANNING</span>
+          <div class="radar-scan-sweep" aria-hidden="true"></div>
+          <div class="radar-orbit" aria-hidden="true"></div>
+          <svg viewBox="0 0 240 240" class="radar-svg" id="radarSvg" aria-hidden="true">
+            <defs>
+              <linearGradient id="radarFillGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="rgba(61,232,255,0.45)" />
+                <stop offset="50%" stop-color="rgba(61,232,255,0.2)" />
+                <stop offset="100%" stop-color="rgba(255,229,102,0.35)" />
+              </linearGradient>
+              <linearGradient id="radarStrokeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#3de8ff" />
+                <stop offset="100%" stop-color="#ffe566" />
+              </linearGradient>
+              <filter id="radarGlow" x="-40%" y="-40%" width="180%" height="180%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <g id="radarGrid"></g>
+            <g id="radarAxes"></g>
+            <polygon class="radar-fill" id="radarFill" filter="url(#radarGlow)" />
+            <g id="radarVerts"></g>
+            <circle class="radar-core-pulse" cx="120" cy="120" r="28" />
+            <circle class="radar-core" cx="120" cy="120" r="3" />
+          </svg>
+          <ul class="radar-labels" id="radarLabels"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 项目详情 -->
+  <section id="project-details" class="project-details-section">
+    <div class="details-layout">
+      <aside class="details-rail details-rail-left" aria-hidden="true">
+        <div class="rail-line"></div>
+        <nav class="details-nav" id="detailsNav" aria-label="项目快速导航"></nav>
+      </aside>
+
+      <div class="details-main">
+        <div class="section-label">
+          <span class="label-line"></span>
+          <h2>项目详情 <span class="en">PROJECT DETAILS</span></h2>
+        </div>
+        <p class="details-hint">按配图分类展示 · 首图突出 · 点击图片放大 · 下方为项目详细内容 · <a href="image-admin.html">管理配图</a></p>
+        <div class="project-details-list" id="projectDetailsList"></div>
+      </div>
+
+      <aside class="details-rail details-rail-right" aria-hidden="true">
+        <div class="rail-line"></div>
+        <div class="rail-deco">GX · DETAIL</div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 图片灯箱 -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-backdrop" data-action="close-lightbox"></div>
+    <button type="button" class="lightbox-close" data-action="close-lightbox" aria-label="关闭">×</button>
+    <button type="button" class="lightbox-nav lightbox-prev" data-action="lightbox-prev" aria-label="上一张">‹</button>
+    <button type="button" class="lightbox-nav lightbox-next" data-action="lightbox-next" aria-label="下一张">›</button>
+    <div class="lightbox-stage">
+      <img class="lightbox-img" id="lightboxImg" alt="" />
+    </div>
+    <p class="lightbox-caption" id="lightboxCaption"></p>
+    <span class="lightbox-counter" id="lightboxCounter"></span>
+  </div>
+
+  <footer class="site-footer">
+    <p>© 2026 郭鑫 · 产品经理作品集 · <a href="image-admin.html" style="color: var(--cyan); text-decoration: none;">项目配图管理</a></p>
+    <p class="footer-sub">GX.PORTFOLIO · BUILT WITH PRECISION</p>
+  </footer>
+
+  <script src="resume-data.js"></script>
+  <script src="js/image-db.js"></script>
+  <script src="icons.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

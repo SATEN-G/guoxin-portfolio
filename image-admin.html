@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>项目配图管理 · 郭鑫作品集</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="css/image-admin.css" />
+</head>
+<body class="admin-body">
+  <div class="tech-ambient" aria-hidden="true">
+    <div class="orb orb-cyan"></div>
+    <div class="orb orb-amber"></div>
+  </div>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="grid-glow" aria-hidden="true"></div>
+
+  <header class="admin-header">
+    <h1><span>IMG</span> · 项目配图管理中心</h1>
+    <div class="admin-actions">
+      <a href="index.html" class="admin-btn" target="_blank">预览作品集 ↗</a>
+      <button type="button" class="admin-btn" id="btnRefresh">刷新</button>
+      <button type="button" class="admin-btn admin-btn-primary" id="btnExportZip">导出 ZIP 包</button>
+      <button type="button" class="admin-btn" id="btnExportSnippet">导出配置片段</button>
+      <button type="button" class="admin-btn admin-btn-danger" id="btnClearAll">清空全部</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <section class="admin-hero">
+      <h2>三端分类 · 一次上传多张图片</h2>
+      <p>
+        每个项目分为 <strong>用户端</strong>、<strong>后台</strong>、<strong>手机端</strong> 三个独立模块。
+        可在模块内「一次选择多张」，或使用顶部「批量上传」先选模块再拖入多张图片。上传后立即在对应模块展示。
+        打开 <a href="index.html" style="color: var(--cyan)">作品集</a> 可同步查看 Banner 与项目详情。
+      </p>
+      <div class="stats-bar" id="statsBar"></div>
+    </section>
+
+    <div class="project-grid" id="projectGrid"></div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <script src="resume-data.js"></script>
+  <script src="js/image-db.js"></script>
+  <script src="js/image-admin.js"></script>
+</body>
+</html>

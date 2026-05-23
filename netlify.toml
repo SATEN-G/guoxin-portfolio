@@ -1,0 +1,9 @@
+[build]
+  publish = "dist"
+  command = "node scripts/build-deploy.mjs"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"

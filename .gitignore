@@ -1,0 +1,5 @@
+node_modules/
+dist/
+*.zip
+resume-text-latest.txt
+.DS_Store
