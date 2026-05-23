@@ -199,6 +199,7 @@ async function refreshUI() {
       <div class="stat-item">共 <strong>${stats.total}</strong> 个项目 · 用户端 / 后台 / 手机端</div>`;
   }
 
+  showStorageNotice(stats);
   bindCardEvents();
 }
 
@@ -327,6 +328,89 @@ function bindCardEvents() {
   });
 }
 
+function guessMimeType(fileName) {
+  const ext = String(fileName).split(".").pop()?.toLowerCase();
+  const map = {
+    jpg: "image/jpeg",
+    jpeg: "image/jpeg",
+    png: "image/png",
+    webp: "image/webp",
+    gif: "image/gif",
+  };
+  return map[ext] || "image/jpeg";
+}
+
+async function importZip(file) {
+  if (!file) return;
+  if (typeof JSZip === "undefined") {
+    showToast("打包组件加载失败");
+    return;
+  }
+
+  const existing = await ProjectImageStore.getAll();
+  if (existing.length && !confirm("导入会与现有图片合并（不会自动删除旧图）。确定继续？")) {
+    return;
+  }
+
+  const zip = await JSZip.loadAsync(await file.arrayBuffer());
+  let manifest = null;
+  const manifestFile = zip.file("image-manifest.json");
+  if (manifestFile) {
+    try {
+      manifest = JSON.parse(await manifestFile.async("string"));
+    } catch {
+      showToast("manifest 解析失败");
+      return;
+    }
+  }
+
+  let imported = 0;
+
+  if (manifest?.projects?.length) {
+    for (const entry of manifest.projects) {
+      const zipPath = entry.path.replace(/^\/+/, "");
+      const zf = zip.file(zipPath) || zip.file(zipPath.replace(/\//g, "\\"));
+      if (!zf) continue;
+      const blob = await zf.async("blob");
+      const fileName = zipPath.split("/").pop() || `${entry.category}.jpg`;
+      const fileObj = new File([blob], fileName, { type: guessMimeType(fileName) });
+      await ProjectImageStore.add(entry.projectIndex, entry.category, fileObj);
+      imported += 1;
+    }
+  } else {
+    const tasks = [];
+    zip.forEach((relativePath, zf) => {
+      if (zf.dir) return;
+      const m = relativePath.match(
+        /^images\/projects\/[^/]+\/(user|admin|mobile)\/[^/]+\.(jpe?g|png|webp|gif)$/i
+      );
+      if (!m) return;
+      const category = m[1];
+      tasks.push(
+        (async () => {
+          const parts = relativePath.split("/");
+          const slug = parts[2];
+          const projectIndex = Math.max(0, parseInt(slug, 10) - 1);
+          const blob = await zf.async("blob");
+          const fileName = parts[parts.length - 1];
+          const fileObj = new File([blob], fileName, { type: guessMimeType(fileName) });
+          await ProjectImageStore.add(projectIndex, category, fileObj);
+          imported += 1;
+        })()
+      );
+    });
+    await Promise.all(tasks);
+  }
+
+  if (!imported) {
+    showToast("ZIP 中未找到可导入的图片");
+    return;
+  }
+
+  showToast(`已导入 ${imported} 张图片`);
+  await refreshUI();
+}
+
 async function exportZip() {
   const projects = getProjects();
   const records = await ProjectImageStore.getAll();
@@ -379,6 +463,39 @@ async function exportZip() {
   showToast("已导出 ZIP");
 }
 
+function showStorageNotice(stats) {
+  const el = document.getElementById("storageNotice");
+  if (!el) return;
+
+  const origin = location.origin || "file://";
+  const isHttp = location.protocol.startsWith("http");
+  const fileRecoveryUrl =
+    "file:///C:/Users/Administrator/.cursor/projects/empty-window/guoxin-portfolio/image-admin.html";
+
+  if (stats.imageCount > 0) {
+    el.hidden = true;
+    return;
+  }
+
+  el.hidden = false;
+  if (isHttp) {
+    el.innerHTML = `
+      <strong>为什么之前上传的图片不见了？</strong><br>
+      配图存在浏览器 IndexedDB，且按「访问地址」分开保存。
+      以前若用 <strong>双击 HTML（file://）</strong> 上传，现在用 <strong>${origin}</strong> 打开会是<strong>另一份空库</strong>，不是被删了。<br>
+      <strong>找回步骤：</strong>① 用<strong>同一浏览器</strong>打开旧地址
+      <code>${fileRecoveryUrl}</code>
+      → ② 点「导出 ZIP 包」→ ③ 回到本页点「导入 ZIP 包」。<br>
+      以后请固定用 <a href="http://localhost:5173/image-admin.html">http://localhost:5173/image-admin.html</a>（先运行 start-local.bat），避免再丢图。`;
+  } else {
+    el.innerHTML = `
+      <strong>当前为 file:// 模式</strong>：与 localhost 本地服务器的数据不互通。
+      上传完成后请点「导出 ZIP 包」，再在
+      <a href="http://localhost:5173/image-admin.html">http://localhost:5173/image-admin.html</a>
+      导入（需先运行 start-local.bat）。`;
+  }
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
   if (window.ProjectImageStore?.runPendingMigrations) {
     const mig = await ProjectImageStore.runPendingMigrations();
@@ -392,6 +509,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   document.getElementById("btnRefresh")?.addEventListener("click", refreshUI);
   document.getElementById("btnExportZip")?.addEventListener("click", exportZip);
+  const importInput = document.getElementById("importZipInput");
+  document.getElementById("btnImportZip")?.addEventListener("click", () => importInput?.click());
+  importInput?.addEventListener("change", async (e) => {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (file) await importZip(file);
+  });
   document.getElementById("btnExportSnippet")?.addEventListener("click", () => {
     showToast("请使用「导出 ZIP」备份；部署时按 manifest 配置 resume-data.js");
   });

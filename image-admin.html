@@ -24,12 +24,15 @@
       <a href="index.html" class="admin-btn" target="_blank">预览作品集 ↗</a>
       <button type="button" class="admin-btn" id="btnRefresh">刷新</button>
       <button type="button" class="admin-btn admin-btn-primary" id="btnExportZip">导出 ZIP 包</button>
+      <input class="file-input" type="file" accept=".zip,application/zip" id="importZipInput" hidden />
+      <button type="button" class="admin-btn admin-btn-primary" id="btnImportZip">导入 ZIP 包</button>
       <button type="button" class="admin-btn" id="btnExportSnippet">导出配置片段</button>
       <button type="button" class="admin-btn admin-btn-danger" id="btnClearAll">清空全部</button>
     </div>
   </header>
 
   <main class="admin-main">
+    <div class="storage-notice" id="storageNotice" hidden></div>
     <section class="admin-hero">
       <h2>三端分类 · 一次上传多张图片</h2>
       <p>

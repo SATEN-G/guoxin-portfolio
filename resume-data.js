@@ -37,6 +37,31 @@ window.RESUME_DATA = {
       tag: "G端 · 数字孪生 · 政务",
       title: "昆山社保大厅数字孪生",
       desc: "三维实景复现社保大厅，业务数据联动驱动全景可视化与运营调度。",
+      images: {
+        user: [
+          "images/projects/01-昆山社保大厅数字孪生/user/user-13.png",
+          "images/projects/01-昆山社保大厅数字孪生/user/user-14.png",
+          "images/projects/01-昆山社保大厅数字孪生/user/user-15.png",
+          "images/projects/01-昆山社保大厅数字孪生/user/user-16.png",
+          "images/projects/01-昆山社保大厅数字孪生/user/user-17.png",
+        ],
+        admin: [
+          "images/projects/01-昆山社保大厅数字孪生/admin/admin-1.png",
+          "images/projects/01-昆山社保大厅数字孪生/admin/admin-2.png",
+          "images/projects/01-昆山社保大厅数字孪生/admin/admin-3.png",
+          "images/projects/01-昆山社保大厅数字孪生/admin/admin-4.png",
+          "images/projects/01-昆山社保大厅数字孪生/admin/admin-5.png",
+          "images/projects/01-昆山社保大厅数字孪生/admin/admin-6.png",
+        ],
+        mobile: [
+          "images/projects/01-昆山社保大厅数字孪生/mobile/mobile-7.png",
+          "images/projects/01-昆山社保大厅数字孪生/mobile/mobile-8.png",
+          "images/projects/01-昆山社保大厅数字孪生/mobile/mobile-9.png",
+          "images/projects/01-昆山社保大厅数字孪生/mobile/mobile-10.png",
+          "images/projects/01-昆山社保大厅数字孪生/mobile/mobile-11.png",
+          "images/projects/01-昆山社保大厅数字孪生/mobile/mobile-12.png",
+        ],
+      },
       detailContent: {
         role: "产品经理 / 项目经理",
         period: "2022-2025",
@@ -68,6 +93,26 @@ window.RESUME_DATA = {
       tag: "B端 · 企业管理 · 2022-2025",
       title: "苍穹内部管理系统",
       desc: "对标 Teambition 的企业级综合管理平台，全公司推广、迭代 11 次。",
+      images: {
+        user: [
+          "images/projects/02-苍穹内部管理系统/user/user-14.png",
+        ],
+        admin: [
+          "images/projects/02-苍穹内部管理系统/admin/admin-1.png",
+          "images/projects/02-苍穹内部管理系统/admin/admin-2.png",
+          "images/projects/02-苍穹内部管理系统/admin/admin-3.png",
+          "images/projects/02-苍穹内部管理系统/admin/admin-4.png",
+          "images/projects/02-苍穹内部管理系统/admin/admin-5.png",
+          "images/projects/02-苍穹内部管理系统/admin/admin-6.png",
+          "images/projects/02-苍穹内部管理系统/admin/admin-7.png",
+          "images/projects/02-苍穹内部管理系统/admin/admin-8.png",
+          "images/projects/02-苍穹内部管理系统/admin/admin-9.png",
+          "images/projects/02-苍穹内部管理系统/admin/admin-10.png",
+          "images/projects/02-苍穹内部管理系统/admin/admin-11.png",
+          "images/projects/02-苍穹内部管理系统/admin/admin-12.png",
+          "images/projects/02-苍穹内部管理系统/admin/admin-13.png",
+        ],
+      },
       detailContent: {
         role: "产品经理",
         period: "2022-2025",
@@ -100,6 +145,17 @@ window.RESUME_DATA = {
       tag: "AI · 多模态 · 2022-2025",
       title: "星渚 AI 平台",
       desc: "文字、图片、视频多模态 AI 能力平台，支撑业务场景落地与商业化探索。",
+      images: {
+        user: [
+          "images/projects/03-星渚-AI-平台/user/user-3.png",
+          "images/projects/03-星渚-AI-平台/user/user-4.png",
+          "images/projects/03-星渚-AI-平台/user/user-5.png",
+        ],
+        admin: [
+          "images/projects/03-星渚-AI-平台/admin/admin-1.png",
+          "images/projects/03-星渚-AI-平台/admin/admin-2.png",
+        ],
+      },
       detailContent: {
         role: "产品经理",
         period: "2022-2025",
@@ -131,6 +187,20 @@ window.RESUME_DATA = {
       tag: "电商 · 2022-2025",
       title: "聪普智能家居电商系统",
       desc: "智能家居品类电商系统，覆盖用户端交易与后台运营全流程。",
+      images: {
+        user: [
+          "images/projects/04-聪普智能家居电商系统/user/user-2.png",
+          "images/projects/04-聪普智能家居电商系统/user/user-3.png",
+          "images/projects/04-聪普智能家居电商系统/user/user-4.png",
+          "images/projects/04-聪普智能家居电商系统/user/user-5.png",
+          "images/projects/04-聪普智能家居电商系统/user/user-6.png",
+          "images/projects/04-聪普智能家居电商系统/user/user-7.png",
+          "images/projects/04-聪普智能家居电商系统/user/user-8.png",
+        ],
+        admin: [
+          "images/projects/04-聪普智能家居电商系统/admin/admin-1.png",
+        ],
+      },
       detailContent: {
         role: "产品经理",
         period: "2022-2025",
@@ -162,6 +232,27 @@ window.RESUME_DATA = {
       tag: "数字会展 · 2022-2025",
       title: "杭州第二届数字博览会数字大屏",
       desc: "数博会数字大屏展示项目，独立带领团队完成现场交付。",
+      images: {
+        user: [
+          "images/projects/05-杭州第二届数字博览会数字/user/user-10.png",
+          "images/projects/05-杭州第二届数字博览会数字/user/user-11.png",
+          "images/projects/05-杭州第二届数字博览会数字/user/user-12.png",
+          "images/projects/05-杭州第二届数字博览会数字/user/user-13.png",
+        ],
+        admin: [
+          "images/projects/05-杭州第二届数字博览会数字/admin/admin-1.png",
+          "images/projects/05-杭州第二届数字博览会数字/admin/admin-2.png",
+          "images/projects/05-杭州第二届数字博览会数字/admin/admin-3.png",
+          "images/projects/05-杭州第二届数字博览会数字/admin/admin-4.png",
+        ],
+        mobile: [
+          "images/projects/05-杭州第二届数字博览会数字/mobile/mobile-5.png",
+          "images/projects/05-杭州第二届数字博览会数字/mobile/mobile-6.png",
+          "images/projects/05-杭州第二届数字博览会数字/mobile/mobile-7.png",
+          "images/projects/05-杭州第二届数字博览会数字/mobile/mobile-8.png",
+          "images/projects/05-杭州第二届数字博览会数字/mobile/mobile-9.png",
+        ],
+      },
       detailContent: {
         role: "产品经理 / 项目经理",
         period: "2022-2025",

@@ -8,13 +8,24 @@
 
 ## 本地预览
 
-在项目目录下启动静态服务器，例如：
+**不要**用 `file://` 直接打开 HTML（容易空白或功能失效）。
 
-```bash
-npx serve .
+### 一键启动（推荐）
+
+双击项目根目录的 **`start-local.bat`**，或在 PowerShell 中：
+
+```powershell
+cd "C:\Users\Administrator\.cursor\projects\empty-window\guoxin-portfolio"
+.\scripts\start-local.ps1
 ```
 
-或直接用浏览器打开 `index.html`。
+浏览器会自动打开：
+
+- 作品集：`http://localhost:5173`
+- 配图管理：`http://localhost:5173/image-admin.html`
+
+> 端口固定为 **5173**。若看到「拒绝连接」，说明服务器未启动，请先运行上面的启动脚本。  
+> 不要用 `localhost:3000`（除非你自己用 `npx serve .` 启动了服务）。
 
 ## 结构
 

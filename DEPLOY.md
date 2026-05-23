@@ -138,12 +138,46 @@ git push
 
 本机 **配图管理** 里上传的图片存在浏览器 IndexedDB，**不会**随 Git 上传。
 
-公网访客要看到配图，请任选一种方式：
+公网访客要看到配图，请用下面 **推荐流程**（一次导出 + 同步 + 推送）：
 
-1. **推荐**：把图片放进 `images/projects/`，在 `resume-data.js` 里配置 `image` 或 `images` 路径，再 `git push`（会打进网站）
-2. 网站上线后，你自己打开 `.../image-admin.html`，在公网环境重新上传（仅保存在访问者本机，不适合给访客看）
+### 推荐：本地导出 → 同步到仓库 → 推送
 
-若要在公网固定展示项目截图，请用方式 1。
+1. **本地**打开 `image-admin.html`（双击或用本地服务器）
+2. 点击 **「导出 ZIP 包」**，得到 `guoxin-portfolio-images.zip`
+3. 在项目目录执行（把 ZIP 路径换成你的下载位置）：
+
+```powershell
+cd "C:\Users\Administrator\.cursor\projects\empty-window\guoxin-portfolio"
+node scripts/sync-images-from-zip.mjs "C:\Users\Administrator\Downloads\guoxin-portfolio-images.zip"
+```
+
+4. 提交并推送：
+
+```powershell
+git add images/projects resume-data.js
+git commit -m "同步项目配图到公网"
+git push
+```
+
+5. 等待 GitHub Actions 部署完成（约 1～3 分钟），刷新线上站点即可
+
+脚本会自动：
+
+- 解压图片到 `images/projects/`
+- 在 `resume-data.js` 各项目下写入 `images: { user, admin, mobile }` 路径
+
+### 备选：仅导入到某个浏览器（不适合给访客看）
+
+在 **线上** 打开 `.../image-admin.html` → **「导入 ZIP 包」**，图片只存在该浏览器 IndexedDB，**其他设备/访客仍看不到**。要给所有人看请用上面的推荐流程。
+
+### 为什么本机有图、别的设备没有？
+
+| 存储位置 | 谁能看到 |
+|----------|----------|
+| 浏览器 IndexedDB（配图管理上传） | **仅本机该浏览器** |
+| `images/projects/` + `resume-data.js`（git push） | **所有设备、所有访客** |
+
+本机打开线上地址时，浏览器会读本机 IndexedDB 里的图，所以你能看到；手机或同事电脑没有这份数据，就显示空白。**必须执行上面的「导出 → sync → push」流程。**
 
 ---
 

@@ -81,6 +81,31 @@
   padding: 2rem;
 }
 
+.storage-notice {
+  margin-bottom: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 193, 7, 0.45);
+  background: rgba(255, 193, 7, 0.08);
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.storage-notice strong {
+  color: var(--yellow);
+}
+
+.storage-notice a {
+  color: var(--cyan);
+}
+
+.storage-notice code {
+  font-size: 0.82rem;
+  color: var(--text);
+  word-break: break-all;
+}
+
 .admin-hero {
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;

@@ -3,3 +3,5 @@ dist/
 *.zip
 resume-text-latest.txt
 .DS_Store
+.sync-test/
+.sync-images-tmp/
